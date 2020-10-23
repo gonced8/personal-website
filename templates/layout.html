@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% if title %}
+		<title>{{ title }} - Gonçalo Raposo</title>
+		{% else %}
+		<title>Gonçalo Raposo</title>
+		{% endif %}
+	</head>
+	<body>
+		{% block content %}{% endblock content %}
+	</body>
+</html>
