@@ -1,5 +1,6 @@
-from personal-website import app
+from personal_website import app
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(debug=False)

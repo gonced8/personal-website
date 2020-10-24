@@ -1,5 +1,5 @@
 from flask import render_template
-from personal-website import app
+from personal_website import app
 
 posts = [
     {
