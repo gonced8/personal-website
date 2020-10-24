@@ -1,4 +1,4 @@
-from src.routes import app
+from personal-website import app
 
 
 if __name__=="__main__":

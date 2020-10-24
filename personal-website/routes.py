@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import render_template
+from personal-website import app
 
 posts = [
     {
@@ -14,8 +15,6 @@ posts = [
         "date_posted": "24 de outubro de 2020"
     }
 ]
-
-app = Flask(__name__)
 
 @app.route('/')
 @app.route("/home")
