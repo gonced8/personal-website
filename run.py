@@ -1,4 +1,4 @@
-from personal_website import app
+from website import app
 
 
 if __name__=="__main__":
