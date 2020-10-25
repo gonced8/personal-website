@@ -1,5 +1,5 @@
 from flask import render_template
-from personal_website import app
+from website import app
 
 posts = [
     {
@@ -9,7 +9,7 @@ posts = [
         "date_posted": "23 de outubro de 2020"
     },
     {
-        "author": "John Doe",
+        "author": "Gonçalo Raposo",
         "title": "Segundo Post",
         "content": "Beep boop",
         "date_posted": "24 de outubro de 2020"
