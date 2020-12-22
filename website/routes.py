@@ -1,5 +1,5 @@
 from flask import render_template
-from website import app
+from website import app, ext
 
 posts = [
     {
@@ -24,3 +24,11 @@ def home():
 @app.route("/about")
 def about():
     return render_template("about.html", title="Sobre")
+
+@ext.register_generator
+def index():
+    yield 'home', {}
+
+@ext.register_generator
+def index():
+    yield 'about', {}
