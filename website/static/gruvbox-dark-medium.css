@@ -183,7 +183,7 @@ html {
 body {
   background-color: #3c3836;    /**/
   color: #ebdbb2;               /**/
-  margin: 0 auto;
+  margin: 0 auto 1em auto;
   max-width: 900px;
   border: 1pt solid #a89984;    /**/
   padding: 1em;
