@@ -1,0 +1,40 @@
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#center-vertical {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 100%;
+}
+
+#center-horizontal {
+	text-align: center;
+}
+
+.material-icons {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 3em;
+}
+
+#contacts-icons {
+	height: 1.5em;
+	width:auto
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#link {
+	display: inline-block;
+	text-decoration: none;
+	padding-bottom: 0.3em;
+}
+
+.container {
+	font-family: 'Ubuntu Mono', monospace;
+}

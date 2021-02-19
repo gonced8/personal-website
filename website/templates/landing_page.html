@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div id="center-horizontal">
+		<div id="portrait">
+			<img style="max-width: 50%; height: auto;" src='{{ url_for("static", filename="images/" + "profile.jpg") }}' alt="Portrait of Gonçalo Raposo">
+		</div>
+		<br/>
+		<h1 id="name">
+			Gonçalo Raposo
+		</h1>
+		<br/>
+		<br/>
+		<p id="message">
+			Website under construction...
+		</p>
+		<br/>
+		<br/>
+		<div id="contacts">
+			<h2>
+				Contacts:
+			</h2>
+			<a id="link" href="https://github.com/gonced8">
+				<img id="contacts-icons" src='{{ url_for("static", filename="icons/" + "GitHub-Mark.svg") }}' alt="GitHub icon">
+				github.com/gonced8
+			</a>
+			<br>
+			<a id="link" href="https://twitter.com/gonced8">
+				<img id="contacts-icons" src='{{ url_for("static", filename="icons/" + "Twitter social icons - circle - white.svg") }}' alt="Twitter icon">
+				twitter.com/gonced8
+			</a>
+			<br>
+			<a id="link" href="https://www.linkedin.com/in/goncalo-raposo/">
+				<img id="contacts-icons" src='{{ url_for("static", filename="icons/" + "linkedin-icon.svg") }}' alt="LinkedIn icon">
+				linkedin.com/in/goncalo-raposo
+			</a>
+			<br>
+			<a id="link" href="mailto:gecraposo@gmail.com">
+				<span class="material-icons" style="color: #ffffff">
+					email
+				</span>
+				gecraposo@gmail.com
+			</a>
+		</div>
+	</div>
+{% endblock content %}
