@@ -16,14 +16,15 @@ img {
 	text-align: center;
 }
 
-.material-icons {
+#material-icons {
 	display: inline-block;
 	vertical-align: middle;
-	font-size: 3em;
+	font-size: 1.5em;
+	color: #ffffff;
 }
 
 #contacts-icons {
-	height: 1.2em;
+	height: 1.5em;
 	width:auto
 	display: inline-block;
 	vertical-align: middle;
@@ -32,7 +33,7 @@ img {
 #link {
 	display: inline-block;
 	text-decoration: none;
-	padding-bottom: 0.3em;
+	padding-bottom: 1em;
 }
 
 .container {
