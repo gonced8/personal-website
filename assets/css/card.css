@@ -1,0 +1,16 @@
+.card {
+}
+
+.card-info {
+	display: inline-block;
+	text-align: left;
+	vertical-align: top;
+	width: 66%
+}
+
+.card-photo {
+	display: inline-block;
+	text-align: right;
+	vertical-align: top;
+	width: 33%
+}

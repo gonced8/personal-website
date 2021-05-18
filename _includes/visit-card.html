@@ -1,0 +1,41 @@
+<div class="vertical-center card">
+	<div class="card-info">
+		<table>
+			<tr>
+				<th> Name: </th>
+				<td> {{ page.fullname }} </td>
+			</tr>
+			<tr>
+				<th> Occupation: </th>
+				<td> {{ page.occupation }} </td>
+			</tr>
+			<tr>
+				<th> Work: </th>
+				<td> {{ page.work }} </td>
+			</tr>
+			<tr>
+				<th> Location: </th>
+				<td> {{ page.location }} </td>
+			</tr>
+			<tr>
+				<th> E-mail: </th>
+				<td>
+					{% for email_i in page.email %}
+						<a href="mailto:{{ email_i }}"> {{ email_i }} </a>
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th> Interests: </th>
+				<td>
+					{% for interest in page.interests %}
+						{{ interest }} <br>
+					{% endfor %}
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="card-photo">
+		<img src="{{ page.image | prepend: site.baseurl }}" alt="{{ page.fullname }} profile picture" title="{{ page.name }}">
+	</div>
+</div>
