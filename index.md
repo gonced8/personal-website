@@ -5,7 +5,9 @@ title: ""
 
 fullname: Gonçalo Eduardo Cascalho Raposo
 occupation: PhD Student and Researcher
-work: INESC-ID, Instituto Superior Técnico, Universidade de Lisboa
+work:
+  text: INESC-ID, Instituto Superior Técnico, Universidade de Lisboa
+  url: https://www.inesc-id.pt/member/21925/
 location: Lisbon, Portugal
 email:
 - goncalo@craposo.com
