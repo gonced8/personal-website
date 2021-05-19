@@ -4,7 +4,7 @@ year: 2021
 reference: "G. Raposo, P. Tomas, and N. Roma, “PositNN: Training Deep Neural Networks with Mixed Low-Precision Posit,” in ICASSP 2021 - 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2021, pp. 7908–7912, doi: 10.1109/ICASSP39728.2021.9413919 [Online]. Available: https://ieeexplore.ieee.org/document/9413919"
 link:
   name: PDF
-  url: "assets/docs/Raposo2021 - PositNN_ Training Deep Neural Networks with Mixed Low Precision Posit.pdf"
+  url: "docs/Raposo2021-PositNN_Training_Deep_Neural_Networks_with_Mixed_Low_Precision_Posit.pdf"
 ---
 
 @InProceedings{Raposo2021,
