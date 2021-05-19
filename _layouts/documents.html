@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="documents">
+	{%- if page.title -%}
+		<h1 class="page-heading">{{ page.title }}</h1>
+	{%- endif -%}
+
+	{%- if site.docs.size > 0 -%}
+		<!--<h2 class="docs-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
+		<ul class="docs-list">
+			{%- for doc in site.docs -%}
+				<li>
+					<span class="doc-meta">{{ doc.year }}</span>
+					<h3>
+						<span class="doc-title">
+							{{ doc.reference }}
+						</span>
+						-
+						<a class="doc-link" href="{{ doc.link.url | relative_url }}">
+							{{ doc.link.name }}
+						</a>
+					</h3>
+				</li>
+			{%- endfor -%}
+		</ul>
+
+		<!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
+	{%- endif -%}
+</div>
