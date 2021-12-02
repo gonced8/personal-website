@@ -47,7 +47,10 @@ plugins:
   - jekyll-sitemap
 
 collections:
-  - docs
+    docs:
+        output: false
+    teaching:
+        output: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
