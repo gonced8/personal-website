@@ -13,8 +13,9 @@ email:
 - goncalo@craposo.com
 - goncalo.cascalho.raposo@tecnico.ulisboa.pt
 interests:
-- Natural Language Processing
 - Artificial General Intelligence
+- Natural Language Processing
+- Machine Learning
 image: assets/images/profile.jpg
 ---
 
