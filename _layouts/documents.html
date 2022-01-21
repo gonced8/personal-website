@@ -10,7 +10,8 @@ layout: default
 	{%- if site.docs.size > 0 -%}
 		<!--<h2 class="docs-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
 		<ul class="docs-list">
-			{%- for doc in site.docs -%}
+			{% assign sorted = site.docs | sort: 'date' | reverse %}
+			{%- for doc in sorted -%}
 				<li>
 					<span class="doc-meta">{{ doc.year }}</span>
 					<h3>
@@ -21,6 +22,12 @@ layout: default
 						<a class="doc-link" href="{{ doc.link.url | relative_url }}">
 							{{ doc.link.name }}
 						</a>
+
+						{% if doc.note %}
+						<div class="doc-note">
+							{{ doc.note }}
+						</div>
+						{% endif %}
 					</h3>
 				</li>
 			{%- endfor -%}
