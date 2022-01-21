@@ -21,7 +21,6 @@ link:
 	eprint      = {2105.00053},
 	eprintclass = {cs.LG},
 	eprinttype  = {arXiv},
-	file        = {:Raposo2021 - PositNN_ Training Deep Neural Networks with Mixed Low Precision Posit.pdf:PDF},
-	keywords    = {cs.LG, cs.NE},
+	keywords    = {posit numerical format, low-precision arithmetic, deep neural networks, training, inference},
 	url         = {https://ieeexplore.ieee.org/document/9413919},
 }
