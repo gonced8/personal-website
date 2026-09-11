@@ -5,8 +5,9 @@ export type Project = {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
-  group: "featured" | "research" | "tools" | "contributions";
+  group: "featured" | "research" | "tools" | "contributions" | "private";
   contribution?: boolean;
+  note?: string;
 };
 
 export const projects: Project[] = [
@@ -16,6 +17,25 @@ export const projects: Project[] = [
       "An MCP server that lets AI agents create, modify, validate and simulate Scilab/Xcos models.",
     tags: ["Python", "MCP", "Scilab/Xcos", "Simulation"],
     githubUrl: "https://github.com/gonced8/xcos-mcp",
+    featured: true,
+    group: "featured",
+  },
+  {
+    title: "PositNN",
+    description:
+      "A C++ framework for training and inference with neural networks using low-precision posit arithmetic.",
+    tags: ["C++", "Posits", "Neural networks", "Systems"],
+    githubUrl: "https://github.com/hpc-ulisboa/posit-neuralnet",
+    featured: true,
+    group: "featured",
+    note: "Master’s thesis work · repository hosted by HPC-ULisboa",
+  },
+  {
+    title: "Notícias do Dia",
+    description:
+      "A daily European Portuguese news podcast built from curated RSS feeds, automated with GitHub Actions and published through RSS.",
+    tags: ["Python", "Automation", "RSS", "Audio"],
+    liveUrl: "https://news-podcast.goncaloraposo.com",
     featured: true,
     group: "featured",
   },
@@ -90,6 +110,13 @@ export const projects: Project[] = [
     group: "research",
   },
   {
+    title: "nemo-backend",
+    description: "Backend for the Nemo application, developed for the Sword AI Challenge 2023.",
+    tags: ["Python", "Backend", "AI"],
+    githubUrl: "https://github.com/gonced8/nemo-backend",
+    group: "research",
+  },
+  {
     title: "reverse-convolution",
     description: "A Julia/Pluto exploration of reverse convolution and image deblurring.",
     tags: ["Julia", "Pluto", "Imaging"],
@@ -98,8 +125,8 @@ export const projects: Project[] = [
   },
   {
     title: "mcdc",
-    description: "A small engineering and developer tool.",
-    tags: ["Tooling"],
+    description: "A tool for automatic MC/DC analysis in C and Python.",
+    tags: ["C", "Python", "Testing"],
     githubUrl: "https://github.com/gonced8/mcdc",
     group: "tools",
   },
@@ -140,5 +167,14 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/gonced8/universal",
     group: "contributions",
     contribution: true,
+  },
+  {
+    title: "Manuela Bazbuz",
+    description:
+      "A private, anonymised web application. Technical and client details are intentionally omitted.",
+    tags: ["Private project", "Web application"],
+    liveUrl: "https://autism.goncaloraposo.com",
+    group: "private",
+    note: "Private work",
   },
 ];
