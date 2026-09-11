@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("writing", ({ data }) => data.locale === "en" && !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id.replace(/^en\//, "").replace(/\.md$/, "") },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const sibling = (
+  await getCollection("writing", ({ data }) => data.locale === "pt-PT" && !data.draft)
+).find(
+  (candidate) =>
+    candidate.data.translationKey && candidate.data.translationKey === entry.data.translationKey,
+);
+const alternatePath = sibling
+  ? `/pt/writing/${sibling.id.replace(/^pt\//, "").replace(/\.md$/, "")}/`
+  : "/pt/writing/";
+const canonicalPath = `/writing/${entry.id.replace(/^en\//, "").replace(/\.md$/, "")}/`;
+---
+
+<ArticleLayout entry={entry} locale="en" canonicalPath={canonicalPath} alternatePath={alternatePath}
+  ><Content /></ArticleLayout
+>

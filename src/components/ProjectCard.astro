@@ -1,0 +1,36 @@
+---
+import type { Project } from "../data/projects";
+interface Props {
+  project: Project;
+  labels?: { source: string; visit: string; contribution: string };
+}
+const {
+  project,
+  labels = { source: "Source", visit: "Visit", contribution: "Open-source contribution" },
+} = Astro.props;
+---
+
+<article class="project-card">
+  <div>
+    <h3>{project.title}</h3>
+    {project.contribution && <p class="eyebrow">{labels.contribution}</p>}
+    <p>{project.description}</p>
+  </div>
+  <ul class="tags" aria-label="Technologies">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+  <p class="card-links">
+    {
+      project.githubUrl && (
+        <a href={project.githubUrl}>
+          {labels.source} <span aria-hidden="true">↗</span>
+        </a>
+      )
+    }
+    {
+      project.liveUrl && (
+        <a href={project.liveUrl}>
+          {labels.visit} <span aria-hidden="true">↗</span>
+        </a>
+      )
+    }
+  </p>
+</article>

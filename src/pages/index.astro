@@ -1,0 +1,8 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HomePage from "../components/HomePage.astro";
+const entries = await getCollection("writing");
+---
+
+<BaseLayout><HomePage locale="en" entries={entries} /></BaseLayout>

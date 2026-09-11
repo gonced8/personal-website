@@ -1,0 +1,48 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { formatDate, localPath, type Locale } from "../i18n/utils";
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  entry: CollectionEntry<"writing">;
+  locale: Locale;
+  canonicalPath: string;
+  alternatePath?: string;
+}
+const { entry, locale, canonicalPath, alternatePath } = Astro.props;
+const pt = locale === "pt-PT";
+const words = (entry.body ?? "").split(/\s+/).filter(Boolean).length;
+const readingTime = Math.max(1, Math.ceil(words / 220));
+---
+
+<BaseLayout
+  title={`${entry.data.title} — Gonçalo Raposo`}
+  description={entry.data.description}
+  locale={locale}
+  canonicalPath={canonicalPath}
+  alternatePath={alternatePath}
+  article={{ publishedTime: entry.data.date, modifiedTime: entry.data.updated }}
+>
+  <article class="article shell-narrow">
+    <a class="back-link" href={localPath(pt ? "/pt/writing/" : "/writing/")}
+      >← {pt ? "Voltar à Escrita" : "Back to Writing"}</a
+    >
+    <header>
+      <p class="metadata">
+        {formatDate(entry.data.date, locale)} · {readingTime} min {pt ? "de leitura" : "read"}
+      </p><h1>{entry.data.title}</h1><p class="lede">{entry.data.description}</p>{
+        entry.data.updated && (
+          <p class="metadata">
+            {pt ? "Atualizado" : "Updated"} {formatDate(entry.data.updated, locale)}
+          </p>
+        )
+      }<ul class="tags">{entry.data.tags.map((tag: string) => <li>{tag}</li>)}</ul>{
+        alternatePath && (
+          <a class="text-link" href={localPath(alternatePath)}>
+            {pt ? "Read in English" : "Ler em português"} <span>→</span>
+          </a>
+        )
+      }
+    </header>
+    <div class="article-content"><slot /></div>
+  </article>
+</BaseLayout>

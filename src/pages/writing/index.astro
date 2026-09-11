@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatDate, localPath } from "../../i18n/utils";
+const entries = (
+  await getCollection("writing", ({ data }) => data.locale === "en" && !data.draft)
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout
+  title="Writing — Gonçalo Raposo"
+  description="Writing about software, AI, engineering, research and personal projects."
+  canonicalPath="/writing/"
+  alternatePath="/pt/writing/"
+>
+  <div class="shell-narrow page-header">
+    <p class="eyebrow">Writing</p><h1>
+      Notes on software, engineering and whatever I’m exploring.
+    </h1>
+  </div>
+  <div class="shell-narrow writing-index">
+    {
+      entries.map((entry) => (
+        <article>
+          <>
+            <p class="metadata">{formatDate(entry.data.date, "en")}</p>
+            <h2>
+              <a
+                href={localPath(`/writing/${entry.id.replace(/^en\//, "").replace(/\.md$/, "")}/`)}
+              >
+                {entry.data.title}
+              </a>
+            </h2>
+            <p>{entry.data.description}</p>
+            <ul class="tags">
+              {entry.data.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </>
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

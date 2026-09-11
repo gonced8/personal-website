@@ -1,0 +1,224 @@
+---
+import { Image } from "astro:assets";
+import profile from "../assets/profile.jpg";
+import ProjectCard from "./ProjectCard.astro";
+import EmailButton from "./EmailButton.astro";
+import { projects } from "../data/projects";
+import { publications } from "../data/publications";
+import { formatDate, localPath, type Locale } from "../i18n/utils";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  locale: Locale;
+  entries: CollectionEntry<"writing">[];
+}
+const { locale, entries } = Astro.props;
+const pt = locale === "pt-PT";
+const copy = pt
+  ? {
+      intro:
+        "Engenheiro de software com formação em engenharia aeroespacial e investigação em inteligência artificial.",
+      detail: "Trabalho em engenharia de software e backend, sobretudo com Go e Python.",
+      about: "Sobre",
+      work: "Projetos selecionados",
+      research: "Investigação",
+      writing: "Últimos textos",
+      beyond: "Para lá do código",
+      contact: "Contacto",
+      aboutText:
+        "O meu percurso vai de Engenharia Aeroespacial à investigação em AI e NLP, e daí ao software de produção. Estudei no Instituto Superior Técnico, investiguei no INESC-ID, trabalhei na Unbabel e sou atualmente Software Engineer na Paddle.",
+      linkedin: "Experiência profissional completa no LinkedIn",
+      allProjects: "Ver todos os projetos",
+      allRepos: "Ver todos os repositórios no GitHub",
+      scholar: "Ver perfil completo no Google Scholar",
+      allWriting: "Ver toda a escrita",
+      source: "Código",
+      visit: "Visitar",
+      contribution: "Contribuição open-source",
+      email: "Enviar email",
+      back: "Ler mais",
+      beyondText:
+        "Fora do software, passo bastante tempo a correr, a viajar e a seguir novos trilhos técnicos. Completei um Ironman em 2024 e continuo a gostar de construir e experimentar coisas novas.",
+      contactText:
+        "Para falar sobre software, investigação ou um projeto, encontra-me no LinkedIn ou no GitHub.",
+    }
+  : {
+      intro:
+        "Software engineer with a background in aerospace engineering and artificial intelligence research.",
+      detail: "I work on backend and software engineering, primarily with Go and Python.",
+      about: "About",
+      work: "Selected work",
+      research: "Research",
+      writing: "Latest writing",
+      beyond: "Beyond code",
+      contact: "Contact",
+      aboutText:
+        "My path runs from Aerospace Engineering through AI and NLP research to production software. I studied at Instituto Superior Técnico, researched at INESC-ID, worked at Unbabel, and am now a Software Engineer at Paddle.",
+      linkedin: "Full professional experience on LinkedIn",
+      allProjects: "View all projects",
+      allRepos: "See everything on GitHub",
+      scholar: "View full profile on Google Scholar",
+      allWriting: "All writing",
+      source: "Source",
+      visit: "Visit",
+      contribution: "Open-source contribution",
+      email: "Email me",
+      back: "Read more",
+      beyondText:
+        "Outside software, I spend a fair amount of time running, travelling and falling into new technical rabbit holes. I completed an Ironman in 2024 and still enjoy building and trying new things.",
+      contactText:
+        "For software, research or project conversations, find me on LinkedIn or GitHub.",
+    };
+const featured = projects.filter((project) => project.featured);
+const href = (url: string) => (url.startsWith("http") ? url : localPath(url));
+const latest = entries
+  .filter((entry) => !entry.data.draft && entry.data.locale === locale)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const prefix = pt ? "/pt" : "";
+---
+
+<div class="shell">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Software Engineer</p><h1 id="hero-title">Gonçalo Raposo</h1><p
+        class="lede"
+      >
+        {copy.intro}
+      </p><p>{copy.detail}</p><p class="social-links">
+        <a href="https://github.com/gonced8">GitHub</a><a
+          href="https://www.linkedin.com/in/goncalo-raposo/">LinkedIn</a
+        ><a href="#contact">{copy.contact}</a>
+      </p>
+    </div>
+    <Image
+      class="profile"
+      src={profile}
+      alt="Gonçalo Raposo"
+      widths={[240, 400, 640]}
+      sizes="(max-width: 700px) 160px, 240px"
+      loading="eager"
+    />
+  </section>
+  <section id="about">
+    <p class="section-kicker">01</p><h2>{copy.about}</h2><div class="prose">
+      <p class="trajectory">
+        Aerospace Engineering <span>→</span> AI/NLP Research <span>→</span> Software Engineering
+      </p><p>{copy.aboutText}</p><a
+        class="arrow-link"
+        href="https://www.linkedin.com/in/goncalo-raposo/">{copy.linkedin} <span>→</span></a
+      >
+    </div>
+  </section>
+  <section id="work">
+    <p class="section-kicker">02</p><h2>{copy.work}</h2><div class="project-grid">
+      {
+        featured.map((project) => (
+          <ProjectCard
+            project={project}
+            labels={{ source: copy.source, visit: copy.visit, contribution: copy.contribution }}
+          />
+        ))
+      }
+    </div><p class="section-links">
+      <a class="arrow-link" href={localPath(`${prefix}/projects/`)}
+        >{copy.allProjects} <span>→</span></a
+      ><a class="arrow-link" href="https://github.com/gonced8">{copy.allRepos} <span>→</span></a>
+    </p>
+  </section>
+  <section id="research">
+    <p class="section-kicker">03</p><h2>{copy.research}</h2><div class="publication-list">
+      {
+        publications
+          .filter((publication) => publication.featured)
+          .map((publication) => (
+            <article>
+              <>
+                <h3>{publication.title}</h3>
+                <p>
+                  {publication.authors.join(", ")} · <em>{publication.venue}</em> ·{" "}
+                  {publication.year}
+                </p>
+                <p class="card-links">
+                  {publication.paperUrl && (
+                    <a href={href(publication.paperUrl)}>
+                      {pt ? "Artigo" : "Paper"} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {publication.doi && (
+                    <a href={publication.doi}>
+                      DOI <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {publication.codeUrl && (
+                    <a href={publication.codeUrl}>
+                      {pt ? "Código" : "Code"} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </p>
+              </>
+            </article>
+          ))
+      }
+    </div><p class="section-links">
+      <a class="arrow-link" href="https://scholar.google.com/citations?user=HBN5h6EAAAAJ"
+        >{copy.scholar} <span>→</span></a
+      ><a class="arrow-link" href="https://orcid.org/0000-0001-7806-6526">ORCID <span>→</span></a>
+    </p>
+  </section>
+  <section id="writing">
+    <p class="section-kicker">04</p><h2>{copy.writing}</h2><div class="writing-list">
+      {
+        latest.map((entry) => (
+          <article>
+            <>
+              <p class="metadata">{formatDate(entry.data.date, locale)}</p>
+              <h3>
+                <a
+                  href={localPath(
+                    `${prefix}/writing/${entry.id.replace(/^\w+\//, "").replace(/\.md$/, "")}/`,
+                  )}
+                >
+                  {entry.data.title}
+                </a>
+              </h3>
+              <p>{entry.data.description}</p>
+              <a
+                class="text-link"
+                href={localPath(
+                  `${prefix}/writing/${entry.id.replace(/^\w+\//, "").replace(/\.md$/, "")}/`,
+                )}
+              >
+                {copy.back} <span>→</span>
+              </a>
+            </>
+          </article>
+        ))
+      }
+    </div><p class="section-links">
+      <a class="arrow-link" href={localPath(`${prefix}/writing/`)}
+        >{copy.allWriting} <span>→</span></a
+      >
+    </p>
+  </section>
+  <section id="beyond">
+    <p class="section-kicker">05</p><h2>{copy.beyond}</h2><div class="prose">
+      <p>{copy.beyondText}</p>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <p class="section-kicker">06</p><h2>{copy.contact}</h2><div class="prose">
+      <p>{copy.contactText}</p><p class="social-links">
+        <a href="https://www.linkedin.com/in/goncalo-raposo/">LinkedIn</a><a
+          href="https://github.com/gonced8">GitHub</a
+        ><EmailButton label={copy.email} />
+      </p><p class="privacy-note">
+        {
+          pt
+            ? "O botão de email cria o endereço apenas após interação; isto reduz scraping básico, mas não é proteção forte."
+            : "The email button builds the address only after interaction; this reduces basic scraping but is not strong protection."
+        }
+      </p>
+    </div>
+  </section>
+</div>

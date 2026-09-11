@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { formatDate, localPath } from "../../../i18n/utils";
+const entries = (
+  await getCollection("writing", ({ data }) => data.locale === "pt-PT" && !data.draft)
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout
+  title="Escrita — Gonçalo Raposo"
+  description="Textos sobre software, AI, engenharia, investigação e projetos pessoais."
+  locale="pt-PT"
+  canonicalPath="/pt/writing/"
+  alternatePath="/writing/"
+>
+  <div class="shell-narrow page-header">
+    <p class="eyebrow">Escrita</p><h1>
+      Notas sobre software, engenharia e aquilo que estou a explorar.
+    </h1>
+  </div>
+  <div class="shell-narrow writing-index">
+    {
+      entries.map((entry) => (
+        <article>
+          <>
+            <p class="metadata">{formatDate(entry.data.date, "pt-PT")}</p>
+            <h2>
+              <a
+                href={localPath(
+                  `/pt/writing/${entry.id.replace(/^pt\//, "").replace(/\.md$/, "")}/`,
+                )}
+              >
+                {entry.data.title}
+              </a>
+            </h2>
+            <p>{entry.data.description}</p>
+            <ul class="tags">
+              {entry.data.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </>
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

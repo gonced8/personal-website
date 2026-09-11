@@ -1,0 +1,96 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { localPath, type Locale } from "../i18n/utils";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+  canonicalPath?: string;
+  alternatePath?: string;
+  article?: { publishedTime: Date; modifiedTime?: Date };
+}
+
+const {
+  title = "Gonçalo Raposo — Software Engineer",
+  description = "Software engineer working on backend systems, with a background in aerospace engineering and artificial intelligence research.",
+  locale = "en",
+  canonicalPath = "/",
+  alternatePath,
+  article,
+} = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site);
+const englishPath =
+  locale === "en" ? canonicalPath : (alternatePath ?? canonicalPath.replace(/^\/pt/, ""));
+const portuguesePath =
+  locale === "pt-PT" ? canonicalPath : (alternatePath ?? `/pt${canonicalPath}`);
+const ogImage = new URL(localPath("/og.svg"), Astro.site);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem("theme");
+        const dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(englishPath, Astro.site)} />
+    <link rel="alternate" hreflang="pt-PT" href={new URL(portuguesePath, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(englishPath, Astro.site)} />
+    <link rel="icon" href={localPath("/favicon.svg")} type="image/svg+xml" />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:site_name" content="Gonçalo Raposo" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={locale === "pt-PT" ? "pt_PT" : "en_GB"} />
+    {
+      article && (
+        <meta property="article:published_time" content={article.publishedTime.toISOString()} />
+      )
+    }
+    {
+      article?.modifiedTime && (
+        <meta property="article:modified_time" content={article.modifiedTime.toISOString()} />
+      )
+    }
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Gonçalo Raposo",
+        url: "https://goncaloraposo.com",
+        jobTitle: "Software Engineer",
+        sameAs: [
+          "https://github.com/gonced8",
+          "https://www.linkedin.com/in/goncalo-raposo/",
+          "https://scholar.google.com/citations?user=HBN5h6EAAAAJ",
+          "https://orcid.org/0000-0001-7806-6526",
+        ],
+      })}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header locale={locale} alternatePath={alternatePath} />
+    <main id="main"><slot /></main>
+    <Footer locale={locale} />
+  </body>
+</html>
