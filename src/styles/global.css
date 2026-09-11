@@ -182,6 +182,7 @@ section {
 .profile {
   display: block;
   width: min(23vw, 15rem);
+  height: min(23vw, 15rem);
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
@@ -432,6 +433,7 @@ section {
   .profile {
     order: -1;
     width: 10rem;
+    height: 10rem;
   }
   .project-grid,
   .writing-list {
