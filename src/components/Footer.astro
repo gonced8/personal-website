@@ -1,0 +1,16 @@
+---
+import { localPath, type Locale } from "../i18n/utils";
+const { locale } = Astro.props as { locale: Locale };
+const pt = locale === "pt-PT";
+---
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <p>© {new Date().getFullYear()} Gonçalo Raposo</p>
+    <div>
+      <a href="https://github.com/gonced8">GitHub</a><a
+        href="https://www.linkedin.com/in/goncalo-raposo/">LinkedIn</a
+      ><a href={localPath(pt ? "/pt/writing/" : "/writing/")}>{pt ? "Escrita" : "Writing"}</a>
+    </div>
+  </div>
+</footer>

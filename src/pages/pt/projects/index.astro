@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProjectCard from "../../../components/ProjectCard.astro";
+import { projects } from "../../../data/projects";
+const groups = [
+  ["Em destaque", "featured"],
+  ["Investigação / AI", "research"],
+  ["Experiências / Ferramentas", "tools"],
+  ["Contribuições open-source", "contributions"],
+] as const;
+---
+
+<BaseLayout
+  title="Projetos — Gonçalo Raposo"
+  description="Software, investigação e contribuições open-source selecionados de Gonçalo Raposo."
+  locale="pt-PT"
+  canonicalPath="/pt/projects/"
+  alternatePath="/projects/"
+>
+  <div class="shell page-header">
+    <p class="eyebrow">Projetos</p><h1>Coisas que construí e para as quais contribuí.</h1><p
+      class="lede"
+    >
+      Uma seleção cuidada de software, investigação e experiências. O histórico completo está no
+      GitHub.
+    </p>
+  </div>
+  <div class="shell project-page">
+    {
+      groups.map(([title, group]) => (
+        <section>
+          <>
+            <h2>{title}</h2>
+            <div class="project-grid">
+              {projects
+                .filter((project) => project.group === group)
+                .map((project) => (
+                  <ProjectCard
+                    project={project}
+                    labels={{
+                      source: "Código",
+                      visit: "Visitar",
+                      contribution: "Contribuição open-source",
+                    }}
+                  />
+                ))}
+            </div>
+          </>
+        </section>
+      ))
+    }<p class="section-links">
+      <a class="arrow-link" href="https://github.com/gonced8"
+        >Ver todos os repositórios no GitHub <span>→</span></a
+      >
+    </p>
+  </div>
+</BaseLayout>

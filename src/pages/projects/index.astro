@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects } from "../../data/projects";
+const groups = [
+  ["Featured", "featured"],
+  ["Research / AI", "research"],
+  ["Experiments / Tools", "tools"],
+  ["Open-source contributions", "contributions"],
+] as const;
+---
+
+<BaseLayout
+  title="Projects — Gonçalo Raposo"
+  description="Selected software, research and open-source work by Gonçalo Raposo."
+  canonicalPath="/projects/"
+  alternatePath="/pt/projects/"
+>
+  <div class="shell page-header">
+    <p class="eyebrow">Projects</p><h1>Things I’ve built and contributed to.</h1><p class="lede">
+      A curated selection of software, research and experiments. The full repository history lives
+      on GitHub.
+    </p>
+  </div>
+  <div class="shell project-page">
+    {
+      groups.map(([title, group]) => (
+        <section>
+          <>
+            <h2>{title}</h2>
+            <div class="project-grid">
+              {projects
+                .filter((project) => project.group === group)
+                .map((project) => (
+                  <ProjectCard project={project} />
+                ))}
+            </div>
+          </>
+        </section>
+      ))
+    }<p class="section-links">
+      <a class="arrow-link" href="https://github.com/gonced8"
+        >View all repositories on GitHub <span>→</span></a
+      >
+    </p>
+  </div>
+</BaseLayout>
