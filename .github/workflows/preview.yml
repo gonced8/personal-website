@@ -34,5 +34,6 @@ jobs:
           source-dir: dist
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          pages-base-url: goncaloraposo.com
+          # Cloudflare serves the validated Pages origin on www; the apex redirects there.
+          pages-base-url: www.goncaloraposo.com
           qr-code: true
