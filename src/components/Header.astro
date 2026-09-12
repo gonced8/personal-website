@@ -33,7 +33,12 @@ const languageHref = alternatePath ?? otherLocalePath(currentPath, locale);
     <nav aria-label={pt ? "Navegação principal" : "Primary navigation"}>
       {
         nav.map(([label, href]) => (
-          <a href={localPath(href.startsWith("#") ? `${home}${href}` : href)}>{label}</a>
+          <a
+            aria-current={currentPath === href ? "page" : undefined}
+            href={localPath(href.startsWith("#") ? `${home}${href}` : href)}
+          >
+            {label}
+          </a>
         ))
       }
     </nav>
@@ -46,6 +51,7 @@ const languageHref = alternatePath ?? otherLocalePath(currentPath, locale);
       >
       <button
         class="theme-toggle"
+        hidden
         type="button"
         aria-label={pt ? "Mudar tema" : "Change theme"}
         title={pt ? "Mudar tema" : "Change theme"}
@@ -56,9 +62,49 @@ const languageHref = alternatePath ?? otherLocalePath(currentPath, locale);
   </div>
 </header>
 <script>
-  document.querySelector<HTMLButtonElement>(".theme-toggle")?.addEventListener("click", () => {
-    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("theme", next);
-  });
+  const button = document.querySelector<HTMLButtonElement>(".theme-toggle");
+  const system = matchMedia("(prefers-color-scheme: dark)");
+  let manual = false;
+  try {
+    manual = ["light", "dark"].includes(localStorage.getItem("theme") ?? "");
+  } catch {
+    /* Optional storage. */
+  }
+  function update() {
+    const dark = document.documentElement.dataset.theme === "dark";
+    const pt = document.documentElement.lang === "pt-PT";
+    button?.setAttribute(
+      "aria-label",
+      dark
+        ? pt
+          ? "Usar tema claro"
+          : "Use light theme"
+        : pt
+          ? "Usar tema escuro"
+          : "Use dark theme",
+    );
+    button?.setAttribute("title", button.getAttribute("aria-label") ?? "");
+    if (button) button.innerHTML = `<span aria-hidden="true">${dark ? "☀" : "☾"}</span>`;
+  }
+  if (button) {
+    button.hidden = false;
+    update();
+    button.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      manual = true;
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        /* Theme still works for this page. */
+      }
+      update();
+    });
+    system.addEventListener("change", ({ matches }) => {
+      if (!manual) {
+        document.documentElement.dataset.theme = matches ? "dark" : "light";
+        update();
+      }
+    });
+  }
 </script>

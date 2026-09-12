@@ -20,6 +20,7 @@ const readingTime = Math.max(1, Math.ceil(words / 220));
   locale={locale}
   canonicalPath={canonicalPath}
   alternatePath={alternatePath}
+  languagePath={alternatePath ?? (pt ? "/writing/" : "/pt/writing/")}
   article={{ publishedTime: entry.data.date, modifiedTime: entry.data.updated }}
 >
   <article class="article shell-narrow">

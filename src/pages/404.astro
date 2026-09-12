@@ -3,7 +3,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { localPath } from "../i18n/utils";
 ---
 
-<BaseLayout title="Page not found — Gonçalo Raposo" description="This page does not exist."
+<BaseLayout
+  title="Page not found — Gonçalo Raposo"
+  description="This page does not exist."
+  noindex
+  languagePath="/pt/"
   ><div class="shell-narrow not-found">
     <p class="eyebrow">404</p><h1>That page isn’t here.</h1><p>
       It may have belonged to the previous version of this site.

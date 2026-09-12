@@ -19,7 +19,7 @@ const sibling = (
 );
 const alternatePath = sibling
   ? `/pt/writing/${sibling.id.replace(/^pt\//, "").replace(/\.md$/, "")}/`
-  : "/pt/writing/";
+  : undefined;
 const canonicalPath = `/writing/${entry.id.replace(/^en\//, "").replace(/\.md$/, "")}/`;
 ---
 
