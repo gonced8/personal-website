@@ -23,3 +23,7 @@ jobs:
       - run: npm run lint
       - run: npm run check
       - run: npm run build
+      - run: npm run verify:build
+      - run: npm run build && npm run verify:build
+        env:
+          SITE_BASE: /pr-preview/pr-123/

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://goncaloraposo.com/sitemap-index.xml
+Sitemap: https://www.goncaloraposo.com/sitemap-index.xml
