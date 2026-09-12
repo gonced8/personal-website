@@ -14,6 +14,7 @@ const {
   <div>
     <h3>{project.title}</h3>
     {project.contribution && <p class="eyebrow">{labels.contribution}</p>}
+    {project.note && <p class="eyebrow">{project.note}</p>}
     <p>{project.description}</p>
   </div>
   <ul class="tags" aria-label="Technologies">{project.tags.map((tag) => <li>{tag}</li>)}</ul>

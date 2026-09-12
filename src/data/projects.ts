@@ -5,8 +5,9 @@ export type Project = {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
-  group: "featured" | "research" | "tools" | "contributions";
+  group: "featured" | "research" | "tools" | "contributions" | "private";
   contribution?: boolean;
+  note?: string;
 };
 
 export const projects: Project[] = [
@@ -140,5 +141,14 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/gonced8/universal",
     group: "contributions",
     contribution: true,
+  },
+  {
+    title: "Accessibility ID card",
+    description:
+      "A private web application that presents an autism identification card in a discreet, accessible format.",
+    tags: ["Accessibility", "Web application", "Private work"],
+    liveUrl: "https://autism.goncaloraposo.com",
+    group: "private",
+    note: "Private work",
   },
 ];
