@@ -11,6 +11,16 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    title: "PositNN: Training Deep Neural Networks with Mixed Low-Precision Posit",
+    authors: ["Gonçalo Raposo", "Pedro Tomás", "Nuno Roma"],
+    venue: "ICASSP",
+    year: 2021,
+    paperUrl:
+      "/papers/Raposo2021-PositNN_Training_Deep_Neural_Networks_with_Mixed_Low_Precision_Posit.pdf",
+    doi: "https://doi.org/10.1109/ICASSP39728.2021.9413919",
+    featured: true,
+  },
+  {
     title: "Information Retrieval Using Fuzzy Fingerprints",
     authors: ["Gonçalo Raposo", "Leonor Coheur", "Bruno Martins"],
     venue: "IPMU",
@@ -43,16 +53,6 @@ export const publications: Publication[] = [
     venue: "Instituto Superior Técnico",
     year: 2022,
     paperUrl: "/papers/Raposo2022a-Document-Level_Abstractive_Summarization.pdf",
-    featured: true,
-  },
-  {
-    title: "PositNN: Training Deep Neural Networks with Mixed Low-Precision Posit",
-    authors: ["Gonçalo Raposo", "Pedro Tomás", "Nuno Roma"],
-    venue: "ICASSP",
-    year: 2021,
-    paperUrl:
-      "/papers/Raposo2021-PositNN_Training_Deep_Neural_Networks_with_Mixed_Low_Precision_Posit.pdf",
-    doi: "https://doi.org/10.1109/ICASSP39728.2021.9413919",
     featured: true,
   },
 ];
