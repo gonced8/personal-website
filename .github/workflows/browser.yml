@@ -1,15 +1,12 @@
-name: Quality
-
+name: Browser checks
 on:
   push:
     branches: [main]
   pull_request:
-
 permissions:
   contents: read
-
 jobs:
-  quality:
+  browser:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,11 +15,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run format:check
-      - run: npm run lint
-      - run: npm run check
+      - run: npx playwright install --with-deps chromium
       - run: npm run build
-      - run: npm run verify:build
-      - run: npm run build && npm run verify:build
-        env:
-          SITE_BASE: /pr-preview/pr-123/
+      - run: npm test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failures
+          path: test-results/
+          retention-days: 7

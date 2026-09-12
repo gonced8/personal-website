@@ -1,0 +1,99 @@
+{
+  "retrieved": "2026-09-12",
+  "medium": [
+    {
+      "file": "convolution-animation.gif",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*8TKcMYQe2vkFMA9i"
+    },
+    {
+      "file": "convolution-example.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*4UPoqlLoLSc7mWWf"
+    },
+    {
+      "file": "convolution-equations.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*0-0BQ5JYqlWz-rG1"
+    },
+    {
+      "file": "convolution-matrix.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*hUvic7_jZbv6OU7w"
+    },
+    {
+      "file": "convolution-rectangular-system.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*YE4henZDj10tP3PR"
+    },
+    {
+      "file": "convolution-inverse.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*ZBqMHjO_ZJqKulvK"
+    },
+    {
+      "file": "convolution-padding-example.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*UWLp_J_MU6OP4hAL"
+    },
+    {
+      "file": "convolution-output-size.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*7yd6wVwO0G1Qw4lg"
+    },
+    {
+      "file": "convolution-padding-size.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*A0DEUF53A1QfzYvl"
+    },
+    {
+      "file": "convolution-square-matrix.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*FGdRTkhLecX1sBGD"
+    },
+    {
+      "file": "convolution-gaussian-kernel.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/0*5F_FsFAhGNbcNy12"
+    },
+    {
+      "file": "blurred-original.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/1*8JBCvd6yRtAuQDfjtuXdLw.png"
+    },
+    {
+      "file": "blurred-reconstruction.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/1*_HzBseYyUID0xu0dfl1r6Q.png"
+    },
+    {
+      "file": "blurred-wrong-kernel.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/1*bs-R0Vxmqaf8diR_9v31ZA.png"
+    },
+    {
+      "file": "blurred-wrong-padding.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/1*19FU42cKIyBCxSHnQcw-Dg.png"
+    },
+    {
+      "file": "blurred-monkey.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/1*ivrLJkywymfnW01MWldwgQ.png"
+    },
+    {
+      "file": "blurred-featured.png",
+      "source": "https://cdn-images-1.medium.com/max/2400/1*-twAey3xMDV8u8F5OsIiIg.png"
+    }
+  ],
+  "blogspot": [
+    {
+      "file": "double-spring-diagram.png",
+      "source": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUoq1l4g3X3VEKEyNAaaJcRxwRUH5_BC6j6i73C1NZnlc8g_0Zl93SlXFLJ1uBiazFzl4gKxTiMRQngipaptckDgQMkx6__TaemILlF8vJmpshMb3Z9KwDxqEl9YqBcbgci3xNnF1fpZU/s1600/Captura+de+Ecr%25C3%25A3+%2528196%2529.png"
+    },
+    {
+      "file": "double-spring-derivation.jpg",
+      "source": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjj938qD9ge1yZXc3RvUs9io4WjMbyYq-ZBIzCRoJFn_7tyvj1KNPOql2Ju-_LFep-_ma6uLL_gZaDrv6PbBroHlO86wn7p3qZwIYhYZycw68Y8_QOHJRKtAgtTxgO-6Uwp_8Nx-ZRaik/s1600/Go2-page-001.jpg"
+    },
+    {
+      "file": "double-spring-derivation-2.jpg",
+      "source": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFd0URKyUTQFZAvOUcoUjmcU25Fi_5MpyXZ5EUvwOiRhDEh5FbNSnQ5aHdE4qxj_9YezKACBQ71wBYtboBiDPdF55b7xEkaP-mlQZZr8OIZaQ7Ksd6lCnrGiOfSyY3Rz8sTv9BLX1-7W8/s1600/Go2-page-002.jpg"
+    },
+    {
+      "file": "double-spring-derivation-3.jpg",
+      "source": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjk_cYe7Ej36NZ1hXwq9unArAyr5GvQpZYQyHx7h0rEyidOtOES1sIbd_zyQY55kq3bJWPHChMCAawBLxYkPEsK2f4D2wGUOjPhLlJBFINfQG2nWew8RrtXB7viKzAJTbx-9QtwAqxXiII/s1600/Go2-page-003.jpg"
+    },
+    {
+      "file": "double-spring-derivation-4.jpg",
+      "source": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUWygVBdXxW6WdGY3QGwDIG-Q52OjL6POMgQuNp18sPCTh2awotlDPJldsOrm6B6AOAuomFCtMJKieZllwU6TyRBB1ynX82xgK_PRmr_FZTZf_leiM01WRgizOrizLzqkY9u4g1C3LYpg/s1600/Go2-page-004.jpg"
+    },
+    {
+      "file": "double-spring-simulation.gif",
+      "source": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPtOq_cZasDk8692iBkNeQuapQOb51ofs_1HYqAFQj1jjOKrKD0fvbpIia18CQ8ELqbaCdnqxRTP2rpg_F_fmQTDhgw5L5TfQUVk1o9XhL1wVwdJmwK3m6FqremqEn7mMxXkZZUAzKxI8/s1600/Untitled2.gif"
+    }
+  ]
+}

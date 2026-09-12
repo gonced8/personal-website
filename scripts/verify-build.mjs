@@ -17,7 +17,7 @@ async function walk(directory) {
     count++;
     assert(!html.includes("PhD Student and Researcher"), `Legacy identity in ${file}`);
     if (base) assert(html.includes('content="noindex, follow"'), `Preview indexed: ${file}`);
-    for (const match of html.matchAll(/(?:href|src|poster)="(\/(?!\/)[^"#?]*)/g)) {
+    for (const match of html.matchAll(/(?:href|src|poster|data-animation)="(\/(?!\/)[^"#?]*)/g)) {
       const url = match[1];
       assert(!base || url.startsWith(`${base}/`), `Escaped preview: ${url} in ${file}`);
       const relative = decodeURIComponent(url.slice(base.length));

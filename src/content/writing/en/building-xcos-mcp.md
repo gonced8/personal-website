@@ -4,6 +4,7 @@ description: "Giving AI agents a practical interface to Scilab/Xcos models."
 date: 2026-09-12
 locale: en
 translationKey: xcos-mcp
+projectId: xcos-mcp
 tags: [mcp, python, engineering, simulation]
 draft: false
 featured: true

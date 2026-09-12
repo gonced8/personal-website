@@ -1,4 +1,5 @@
-import { readdir, readFile, mkdir } from "node:fs/promises";
+import { readdir, readFile, mkdir, writeFile } from "node:fs/promises";
+import process from "node:process";
 import path from "node:path";
 import sharp from "sharp";
 import { Buffer } from "node:buffer";
@@ -35,3 +36,4 @@ async function walk(directory) {
   }
 }
 await walk("dist");
+await writeFile("dist/build.json", JSON.stringify({ commit: process.env.GITHUB_SHA ?? "local" }));

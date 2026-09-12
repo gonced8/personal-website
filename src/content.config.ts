@@ -11,6 +11,7 @@ const writing = defineCollection({
     updated: z.coerce.date().optional(),
     locale: z.enum(["en", "pt-PT"]),
     translationKey: z.string().optional(),
+    projectId: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
