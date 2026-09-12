@@ -74,3 +74,26 @@ test("static content works without JavaScript", async ({ browser }) => {
   await expect(page.locator(".language-toggle")).toHaveAttribute("href", "/");
   await context.close();
 });
+test("editorial order, complete migration and private project boundaries", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#work .project-card h3")).toHaveText([
+    "Notícias do Dia",
+    "Workout Player",
+    "Orbit Radar",
+    "Split",
+    "xcos-mcp",
+    "PositNN",
+  ]);
+  await expect(page.locator("#research h3").first()).toContainText("PositNN");
+  await page.goto("/projects/");
+  await expect(page.locator('a[href*="autism.goncaloraposo.com"]')).toHaveCount(0);
+  await expect(page.locator("#accessibility-card")).toContainText("fictional data");
+  await page.goto("/writing/recovering-a-blurred-image/");
+  await expect(page.locator(".article-content img")).toHaveCount(17);
+  await page.goto("/writing/double-spring-pendulum/");
+  await expect(page.locator(".article-content img")).toHaveCount(6);
+  await expect(page.locator(".katex-error")).toHaveCount(0);
+  await expect(page.locator("pre")).toContainText("def calc_alpha_2");
+  await page.goto("/writing/");
+  await expect(page.locator('a[href*="building-noticias-do-dia"]')).toHaveCount(0);
+});
