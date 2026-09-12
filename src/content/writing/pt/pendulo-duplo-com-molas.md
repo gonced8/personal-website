@@ -1,28 +1,28 @@
 ---
-title: "Double Spring Pendulum"
-description: "The complete Lagrangian derivation, Mathematica workings and original Python simulation of a double spring pendulum."
+title: "Pêndulo duplo com molas"
+description: "A dedução lagrangiana completa, o desenvolvimento em Mathematica e a simulação original em Python de um pêndulo duplo com molas."
 date: 2016-09-06
 updated: 2026-09-12
-locale: en
+locale: pt-PT
 translationKey: double-spring-pendulum
-tags: [physics, simulation, python, lagrangian-mechanics]
+tags: [física, simulação, python, mecânica-lagrangiana]
 draft: false
 featured: false
 ---
 
-> Originally published on [The Life of Go](https://thelifeofgo.blogspot.com/2016/09/double-spring-pendulum_3.html) in 2016. Republished here with the full text, equations, derivation images and code.
+> Publicado originalmente no [The Life of Go](https://thelifeofgo.blogspot.com/2016/09/double-spring-pendulum_3.html) em 2016. Republicado aqui com o texto completo, as equações, as imagens da dedução e o código.
 
-It's a small variation of a simple physics problem, the double pendulum. In this case, the wires are not rigid, but instead, they're springs, therefore, double spring pendulum.
+Esta é uma pequena variação de um problema simples de física: o pêndulo duplo. Neste caso, os fios não são rígidos; são molas. Temos, portanto, um pêndulo duplo com molas.
 
-The problem consists in finding the motion equations of this system. Here's a representation of the system:
+O problema consiste em encontrar as equações de movimento deste sistema. Esta é uma representação do sistema:
 
-[![Double spring pendulum diagram](/writing/double-spring-diagram.png)](/writing/double-spring-diagram.png)
+[![Diagrama de um pêndulo duplo com molas](/writing/double-spring-diagram.png)](/writing/double-spring-diagram.png)
 
-## The Lagrangian
+## O lagrangiano
 
-I chose to solve this problem with a Lagrangian approach. Of course it'd be possible with Newton, but it would be so much more "painful".
+Escolhi resolver este problema através de uma abordagem lagrangiana. Seria, naturalmente, possível usar a mecânica newtoniana, mas seria muito mais trabalhoso.
 
-For this reason, I started by writing the Lagrangian of the system. There are 4 degrees of freedom: $\alpha$, $\beta$, $a$ and $b$. With those identified, we can write the kinetic energy followed by the potential energy.
+Comecei, por isso, por escrever o lagrangiano do sistema. Existem quatro graus de liberdade: $\alpha$, $\beta$, $a$ e $b$. Depois de os identificar, podemos escrever primeiro a energia cinética e, em seguida, a energia potencial.
 
 $$
 K = \frac{1}{2} m_{1}v_{1}^2 + \frac{1}{2} m_{2}v_{2}^2
@@ -36,9 +36,9 @@ $$
 \overrightarrow{v_{2}}=\overrightarrow{v_{1}}+\overrightarrow{v'}= \overrightarrow{v_{1}} + \left ( \overrightarrow{\dot{b}}+\overrightarrow{\dot{\beta}b} \right )
 $$
 
-In this case $\overrightarrow{v_{1}}$ and $\overrightarrow{v_{2}}$ stand for the velocity of each mass, and $\overrightarrow{v'}$ for the relative velocity between the second mass with respect to the first.
+Neste caso, $\overrightarrow{v_{1}}$ e $\overrightarrow{v_{2}}$ representam a velocidade de cada massa, e $\overrightarrow{v'}$ a velocidade relativa da segunda massa em relação à primeira.
 
-It will be useful to find the expression for the square of each. The first one is very easy, due to the fact that the vectors are perpendicular. The second one, unfortunately, isn't that straight forward, but I'll spare you the math in between.
+Será útil encontrar a expressão do quadrado de cada velocidade. A primeira é muito simples, porque os vetores são perpendiculares. A segunda, infelizmente, não é tão direta, mas poupo-te aos cálculos intermédios.
 
 $$
 v_{1}^2=\dot{a}^2+\dot{\alpha}^2a^2
@@ -51,7 +51,7 @@ v_{2}^2 &= \dot{a}^2+\dot{\alpha}^2a^2+\dot{b}^2+\dot{\beta}^2b^2 \\
 \end{aligned}
 $$
 
-The potential energy follows as:
+A energia potencial é dada por:
 
 $$
 U=m_{1}gy_{1}+m_{2}gy_{2}+\frac{1}{2}k_{1}\Delta l_{1} ^2+\frac{1}{2}k_{2}\Delta l_{2} ^2
@@ -73,11 +73,11 @@ $$
 \Delta l_{2} = b - l_{2}
 $$
 
-Where $l_{1}$ and $l_{2}$ are the springs' free lengths.
+onde $l_{1}$ e $l_{2}$ são os comprimentos naturais das molas.
 
-## Equations of motion
+## Equações de movimento
 
-Now that we have defined the Lagrangian, we can calculate the Euler–Lagrange equations of motion:
+Agora que definimos o lagrangiano, podemos calcular as equações de movimento de Euler–Lagrange:
 
 $$
 \frac{\partial L}{\partial \alpha}-\frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\partial L}{\partial{\alpha}'} \right )=0
@@ -95,19 +95,19 @@ $$
 \frac{\partial L}{\partial b}-\frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\partial L}{\partial{b}'} \right )=0
 $$
 
-## Mathematica derivation
+## Dedução em Mathematica
 
-At this part, I decided to use the tools of Wolfram Mathematica to solve this equations and find the solution of this system. The four pages of the original Mathematica derivation are below.
+Nesta fase, decidi usar as ferramentas do Wolfram Mathematica para resolver estas equações e encontrar a solução do sistema. As quatro páginas da dedução original em Mathematica encontram-se abaixo.
 
-[![Mathematica derivation, page 1 of 4](/writing/double-spring-derivation.jpg)](/writing/double-spring-derivation.jpg)
+[![Dedução em Mathematica, página 1 de 4](/writing/double-spring-derivation.jpg)](/writing/double-spring-derivation.jpg)
 
-[![Mathematica derivation, page 2 of 4](/writing/double-spring-derivation-2.jpg)](/writing/double-spring-derivation-2.jpg)
+[![Dedução em Mathematica, página 2 de 4](/writing/double-spring-derivation-2.jpg)](/writing/double-spring-derivation-2.jpg)
 
-[![Mathematica derivation, page 3 of 4](/writing/double-spring-derivation-3.jpg)](/writing/double-spring-derivation-3.jpg)
+[![Dedução em Mathematica, página 3 de 4](/writing/double-spring-derivation-3.jpg)](/writing/double-spring-derivation-3.jpg)
 
-[![Mathematica derivation, page 4 of 4](/writing/double-spring-derivation-4.jpg)](/writing/double-spring-derivation-4.jpg)
+[![Dedução em Mathematica, página 4 de 4](/writing/double-spring-derivation-4.jpg)](/writing/double-spring-derivation-4.jpg)
 
-Otherwise, the result is:
+O resultado é:
 
 $$
 \alpha''=-\frac{1}{a} \left (2\,a'\,\alpha' + g\,sin(\alpha)+\frac{k_{2}}{m_{1}}\,(b-l_{2})\,sin(\alpha-\beta) \right )
@@ -125,15 +125,15 @@ $$
 b''=\beta'^2\,b-\frac{k_{2}}{m_{2}}\,(b-l_{2})\,-\frac{k_{2}}{m_{1}}\,(b-l_{2})+\frac{k_{1}}{m_{1}}\,(a-l_{1})\,cos(\alpha-\beta)
 $$
 
-## Numerical simulation
+## Simulação numérica
 
-Having these equations, I chose to make a little simulation in Python to test the results. In the next gif, you can see how it worked (for some arbitrary initial values):
+Com estas equações, fiz uma pequena simulação em Python para testar os resultados. No GIF seguinte podes ver como funcionou, usando alguns valores iniciais arbitrários:
 
-![Double spring pendulum simulation](/writing/double-spring-simulation.gif)
+![Simulação de um pêndulo duplo com molas](/writing/double-spring-simulation.gif)
 
-## Original Python implementation
+## Implementação original em Python
 
-The original Python implementation follows:
+Segue-se a implementação original em Python:
 
 ```python
 import math
@@ -233,8 +233,8 @@ while 1:
     t=t+dt
 ```
 
-Hope that this was helpful to you in any way! If any doubt remains, feel free to contact me or to comment bellow.
+Espero que isto te tenha sido útil de alguma forma. Se restar alguma dúvida, podes contactar-me ou deixar um comentário.
 
-## A note on this republication
+## Nota sobre esta republicação
 
-This is the complete 2016 article, with its derivation and historical implementation. The code uses Python 2 and the old VPython `visual` module; it is preserved as an archive, not presented as a current installation guide. The original simulation uses simple time stepping and arbitrary initial conditions. Its numerical stability and energy conservation should be assessed before using it for further analysis.
+Este é o artigo completo de 2016, incluindo a dedução e a implementação histórica. O código usa Python 2 e o antigo módulo `visual` do VPython; é preservado como arquivo, não como um guia de instalação atual. A simulação original usa uma integração temporal simples e condições iniciais arbitrárias. A sua estabilidade numérica e conservação de energia devem ser avaliadas antes de ser usada para análises adicionais.

@@ -30,7 +30,7 @@ for (const width of [320, 375, 768, 1440]) {
     });
   }
 }
-test("theme persistence, keyboard and translation fallback", async ({ page }) => {
+test("theme persistence, keyboard and article translations", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
   await page.keyboard.press("Tab");
@@ -39,8 +39,19 @@ test("theme persistence, keyboard and translation fallback", async ({ page }) =>
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   await page.goto("/writing/recovering-a-blurred-image/");
-  await expect(page.locator('link[hreflang="pt-PT"]')).toHaveCount(0);
-  await expect(page.locator(".language-toggle")).toHaveAttribute("href", "/pt/writing/");
+  await expect(page.locator('link[hreflang="pt-PT"]')).toHaveAttribute(
+    "href",
+    "https://www.goncaloraposo.com/pt/writing/recuperar-uma-imagem-desfocada/",
+  );
+  await expect(page.locator(".language-toggle")).toHaveAttribute(
+    "href",
+    "/pt/writing/recuperar-uma-imagem-desfocada/",
+  );
+  await page.goto("/pt/writing/pendulo-duplo-com-molas/");
+  await expect(page.locator(".language-toggle")).toHaveAttribute(
+    "href",
+    "/writing/double-spring-pendulum/",
+  );
   await page.goto("/writing/building-xcos-mcp/");
   await expect(page.locator(".language-toggle")).toHaveAttribute(
     "href",
@@ -96,4 +107,12 @@ test("editorial order, complete migration and private project boundaries", async
   await expect(page.locator("pre")).toContainText("def calc_alpha_2");
   await page.goto("/writing/");
   await expect(page.locator('a[href*="building-noticias-do-dia"]')).toHaveCount(0);
+  await page.goto("/pt/");
+  await expect(page.locator("#writing article h3")).toHaveText([
+    "Construir o xcos-mcp",
+    "É possível recuperar uma imagem desfocada?",
+    "Pêndulo duplo com molas",
+  ]);
+  await page.goto("/pt/writing/");
+  await expect(page.locator("main article")).toHaveCount(3);
 });
