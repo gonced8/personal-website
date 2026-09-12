@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import profile from "../assets/profile.jpg";
 import ProjectCard from "./ProjectCard.astro";
 import EmailButton from "./EmailButton.astro";
-import { projects } from "../data/projects";
+import { featuredProjects } from "../data/projects";
 import { publications } from "../data/publications";
 import { formatDate, localPath, type Locale } from "../i18n/utils";
 import type { CollectionEntry } from "astro:content";
@@ -18,7 +18,7 @@ const copy = pt
   ? {
       intro:
         "Engenheiro de software com formação em engenharia aeroespacial e investigação em inteligência artificial.",
-      detail: "Trabalho em engenharia de software e backend, sobretudo com Go e Python.",
+      detail: "Atualmente, trabalho em backend na Paddle, sobretudo com Go e Python.",
       about: "Sobre",
       work: "Projetos selecionados",
       research: "Investigação",
@@ -45,7 +45,7 @@ const copy = pt
   : {
       intro:
         "Software engineer with a background in aerospace engineering and artificial intelligence research.",
-      detail: "I work on backend and software engineering, primarily with Go and Python.",
+      detail: "Currently working on backend systems at Paddle, primarily with Go and Python.",
       about: "About",
       work: "Selected work",
       research: "Research",
@@ -69,7 +69,7 @@ const copy = pt
       contactText:
         "For software, research or project conversations, find me on LinkedIn or GitHub.",
     };
-const featured = projects.filter((project) => project.featured);
+const featured = featuredProjects;
 const href = (url: string) => (url.startsWith("http") ? url : localPath(url));
 const latest = entries
   .filter((entry) => !entry.data.draft && entry.data.locale === locale)
@@ -81,7 +81,7 @@ const prefix = pt ? "/pt" : "";
 <div class="shell">
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="eyebrow">Software Engineer</p><h1 id="hero-title">Gonçalo Raposo</h1><p
+      <p class="eyebrow">Software Engineer · Paddle</p><h1 id="hero-title">Gonçalo Raposo</h1><p
         class="lede"
       >
         {copy.intro}
@@ -95,27 +95,28 @@ const prefix = pt ? "/pt" : "";
       class="profile"
       src={profile}
       alt="Gonçalo Raposo"
-      widths={[240, 400, 640]}
-      sizes="(max-width: 700px) 160px, 240px"
+      widths={[144, 200, 288, 400]}
+      sizes="(max-width: 760px) 144px, 200px"
+      width={200}
+      height={200}
       loading="eager"
     />
   </section>
-  <section id="about">
-    <p class="section-kicker">01</p><h2>{copy.about}</h2><div class="prose">
-      <p class="trajectory">
-        Aerospace Engineering <span>→</span> AI/NLP Research <span>→</span> Software Engineering
-      </p><p>{copy.aboutText}</p><a
+  <section id="about" class="section-split">
+    <h2>{copy.about}</h2><div class="prose">
+      <p>{copy.aboutText}</p><a
         class="arrow-link"
         href="https://www.linkedin.com/in/goncalo-raposo/">{copy.linkedin} <span>→</span></a
       >
     </div>
   </section>
   <section id="work">
-    <p class="section-kicker">02</p><h2>{copy.work}</h2><div class="project-grid">
+    <h2>{copy.work}</h2><div class="project-grid">
       {
         featured.map((project) => (
           <ProjectCard
             project={project}
+            locale={locale}
             labels={{ source: copy.source, visit: copy.visit, contribution: copy.contribution }}
           />
         ))
@@ -126,48 +127,8 @@ const prefix = pt ? "/pt" : "";
       ><a class="arrow-link" href="https://github.com/gonced8">{copy.allRepos} <span>→</span></a>
     </p>
   </section>
-  <section id="research">
-    <p class="section-kicker">03</p><h2>{copy.research}</h2><div class="publication-list">
-      {
-        publications
-          .filter((publication) => publication.featured)
-          .map((publication) => (
-            <article>
-              <>
-                <h3>{publication.title}</h3>
-                <p>
-                  {publication.authors.join(", ")} · <em>{publication.venue}</em> ·{" "}
-                  {publication.year}
-                </p>
-                <p class="card-links">
-                  {publication.paperUrl && (
-                    <a href={href(publication.paperUrl)}>
-                      {pt ? "Artigo" : "Paper"} <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
-                  {publication.doi && (
-                    <a href={publication.doi}>
-                      DOI <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
-                  {publication.codeUrl && (
-                    <a href={publication.codeUrl}>
-                      {pt ? "Código" : "Code"} <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
-                </p>
-              </>
-            </article>
-          ))
-      }
-    </div><p class="section-links">
-      <a class="arrow-link" href="https://scholar.google.com/citations?user=HBN5h6EAAAAJ"
-        >{copy.scholar} <span>→</span></a
-      ><a class="arrow-link" href="https://orcid.org/0000-0001-7806-6526">ORCID <span>→</span></a>
-    </p>
-  </section>
   <section id="writing">
-    <p class="section-kicker">04</p><h2>{copy.writing}</h2><div class="writing-list">
+    <h2>{copy.writing}</h2><div class="writing-list">
       {
         latest.map((entry) => (
           <article>
@@ -201,13 +162,54 @@ const prefix = pt ? "/pt" : "";
       >
     </p>
   </section>
-  <section id="beyond">
-    <p class="section-kicker">05</p><h2>{copy.beyond}</h2><div class="prose">
+  <section id="research">
+    <h2>{copy.research}</h2><div class="publication-list">
+      {
+        publications
+          .filter((publication) => publication.featured)
+          .map((publication) => (
+            <article>
+              <>
+                <h3>{publication.title}</h3>
+                {publication.summary && <p>{publication.summary[locale]}</p>}
+                <p>
+                  {publication.authors.join(", ")} · <em>{publication.venue}</em> ·{" "}
+                  {publication.year}
+                </p>
+                <p class="card-links">
+                  {publication.paperUrl && (
+                    <a href={href(publication.paperUrl)}>
+                      {pt ? "Artigo" : "Paper"} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {publication.doi && (
+                    <a href={publication.doi}>
+                      DOI <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {publication.codeUrl && (
+                    <a href={publication.codeUrl}>
+                      {pt ? "Código" : "Code"} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </p>
+              </>
+            </article>
+          ))
+      }
+    </div><p class="section-links">
+      <a class="arrow-link" href="https://scholar.google.com/citations?user=HBN5h6EAAAAJ"
+        >{copy.scholar} <span>→</span></a
+      ><a class="arrow-link" href="https://orcid.org/0000-0001-7806-6526">ORCID <span>→</span></a>
+    </p>
+  </section>
+  <section id="beyond" class="section-split">
+    <h2>{copy.beyond}</h2><div class="prose">
       <p>{copy.beyondText}</p>
     </div>
   </section>
-  <section id="contact" class="contact">
-    <p class="section-kicker">06</p><h2>{copy.contact}</h2><div class="prose">
+  <section id="contact" class="section-split">
+    <h2>{copy.contact}</h2><div class="prose">
       <p>{copy.contactText}</p><p class="social-links">
         <a href="https://www.linkedin.com/in/goncalo-raposo/">LinkedIn</a><a
           href="https://github.com/gonced8">GitHub</a

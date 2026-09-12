@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
-import { projects } from "../../data/projects";
+import { projects, featuredProjects } from "../../data/projects";
 const groups = [
   ["Featured", "featured"],
   ["Research / AI", "research"],
   ["Experiments / Tools", "tools"],
-  ["Open-source contributions", "contributions"],
+  ["Open-source forks", "contributions"],
   ["Selected private work", "private"],
 ] as const;
 ---
@@ -29,11 +29,16 @@ const groups = [
         <section>
           <>
             <h2>{title}</h2>
-            <div class="project-grid">
-              {projects
+            <div
+              class={group === "featured" || group === "private" ? "project-grid" : "project-list"}
+            >
+              {(group === "featured" ? featuredProjects : projects)
                 .filter((project) => project.group === group)
                 .map((project) => (
-                  <ProjectCard project={project} />
+                  <ProjectCard
+                    project={project}
+                    compact={group !== "featured" && group !== "private"}
+                  />
                 ))}
             </div>
           </>

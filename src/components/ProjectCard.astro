@@ -1,35 +1,73 @@
 ---
 import type { Project } from "../data/projects";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { localPath, type Locale } from "../i18n/utils";
+import ProjectVisual from "./ProjectVisual.astro";
 interface Props {
   project: Project;
   labels?: { source: string; visit: string; contribution: string };
+  locale?: Locale;
+  compact?: boolean;
 }
 const {
   project,
+  locale = "en",
+  compact = false,
   labels = { source: "Source", visit: "Visit", contribution: "Open-source contribution" },
 } = Astro.props;
+const pt = locale === "pt-PT";
+const title = pt ? (project.titlePt ?? project.title) : project.title;
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/projects/*.webp", {
+  eager: true,
+});
+const picture = project.image && images[`../assets/projects/${project.image.file}.webp`]?.default;
 ---
 
-<article class="project-card">
+<article class="project-card" id={project.id}>
+  {
+    !compact && picture && (
+      <div class="project-visual">
+        <Image
+          src={picture}
+          alt={project.image!.alt[locale]}
+          widths={[400, 600, 1000]}
+          sizes="(max-width: 760px) calc(100vw - 40px), 520px"
+          loading="lazy"
+        />
+      </div>
+    )
+  }
+  {!compact && project.visual && <ProjectVisual kind={project.visual} locale={locale} />}
   <div>
-    <h3>{project.title}</h3>
+    <h3>{title}</h3>
     {project.contribution && <p class="eyebrow">{labels.contribution}</p>}
-    {project.note && <p class="eyebrow">{project.note}</p>}
-    <p>{project.description}</p>
+    {project.note && <p class="project-note">{project.note[locale]}</p>}
+    <p>{project.description[locale]}</p>
+    {project.decision && <p class="project-decision">{project.decision[locale]}</p>}
   </div>
-  <ul class="tags" aria-label="Technologies">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+  <ul class="tags" aria-label={pt ? "Tecnologias" : "Technologies"}>
+    {project.tags.map((tag) => <li>{tag}</li>)}
+  </ul>
   <p class="card-links">
     {
       project.githubUrl && (
-        <a href={project.githubUrl}>
+        <a href={project.githubUrl} aria-label={`${labels.source}: ${title}`}>
           {labels.source} <span aria-hidden="true">↗</span>
         </a>
       )
     }
     {
       project.liveUrl && (
-        <a href={project.liveUrl}>
+        <a href={project.liveUrl} aria-label={`${labels.visit}: ${title}`}>
           {labels.visit} <span aria-hidden="true">↗</span>
+        </a>
+      )
+    }
+    {
+      project.article?.[locale] && (
+        <a href={localPath(project.article[locale]!)}>
+          {pt ? "Ler sobre o projeto" : "Read about the project"} →
         </a>
       )
     }
