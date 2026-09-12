@@ -12,25 +12,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "xcos-mcp",
-    description:
-      "An MCP server that lets AI agents create, modify, validate and simulate Scilab/Xcos models.",
-    tags: ["Python", "MCP", "Scilab/Xcos", "Simulation"],
-    githubUrl: "https://github.com/gonced8/xcos-mcp",
-    featured: true,
-    group: "featured",
-  },
-  {
-    title: "PositNN",
-    description:
-      "A C++ framework for training and inference with neural networks using low-precision posit arithmetic.",
-    tags: ["C++", "Posits", "Neural networks", "Systems"],
-    githubUrl: "https://github.com/hpc-ulisboa/posit-neuralnet",
-    featured: true,
-    group: "featured",
-    note: "Master’s thesis work · repository hosted by HPC-ULisboa",
-  },
-  {
     title: "Notícias do Dia",
     description:
       "A daily European Portuguese news podcast built from curated RSS feeds, automated with GitHub Actions and published through RSS.",
@@ -50,6 +31,15 @@ export const projects: Project[] = [
     group: "featured",
   },
   {
+    title: "Orbit Radar",
+    description:
+      "A satellite tracker with 3D visualisation, live positions, ground tracks, search and camera follow.",
+    tags: ["React", "TypeScript", "Orbit"],
+    githubUrl: "https://github.com/gonced8/orbitradar-frontend",
+    featured: true,
+    group: "featured",
+  },
+  {
     title: "Split",
     description:
       "A receipt-splitting app with capture, perspective correction, item extraction, editing and totals.",
@@ -59,13 +49,23 @@ export const projects: Project[] = [
     group: "featured",
   },
   {
-    title: "Orbit Radar",
+    title: "xcos-mcp",
     description:
-      "A satellite tracker with 3D visualisation, live positions, ground tracks, search and camera follow.",
-    tags: ["React", "TypeScript", "Orbit"],
-    githubUrl: "https://github.com/gonced8/orbitradar-frontend",
+      "An MCP server that lets AI agents create, modify, validate and simulate Scilab/Xcos models.",
+    tags: ["Python", "MCP", "Scilab/Xcos", "Simulation"],
+    githubUrl: "https://github.com/gonced8/xcos-mcp",
     featured: true,
     group: "featured",
+  },
+  {
+    title: "PositNN",
+    description:
+      "A C++ framework for training and inference with neural networks using low-precision posit arithmetic.",
+    tags: ["C++", "Posits", "Neural networks", "Systems"],
+    githubUrl: "https://github.com/hpc-ulisboa/posit-neuralnet",
+    featured: true,
+    group: "featured",
+    note: "Master’s thesis work · repository hosted by HPC-ULisboa",
   },
   {
     title: "rachael-scai",
