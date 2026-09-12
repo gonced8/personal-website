@@ -33,3 +33,5 @@ jobs:
           folder: dist
           clean-exclude: pr-preview
           force: false
+      - name: Verify published commit and routes
+        run: node scripts/verify-deploy.mjs

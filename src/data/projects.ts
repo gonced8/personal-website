@@ -220,8 +220,8 @@ export const projects: Project[] = [
     id: "transformer-crypto",
     title: "transformer-crypto",
     description: {
-      en: "Experiments around Transformer models and cryptography.",
-      "pt-PT": "Experiências com modelos Transformer e criptografia.",
+      en: "A Transformer decoder experiment for predicting Bitcoin prices.",
+      "pt-PT": "Uma experiência com um descodificador Transformer para prever preços de Bitcoin.",
     },
     tags: ["Python", "ML"],
     githubUrl: "https://github.com/gonced8/transformer-crypto",
@@ -232,8 +232,8 @@ export const projects: Project[] = [
     id: "msc-dataset",
     title: "msc-dataset",
     description: {
-      en: "Dataset tooling for research work.",
-      "pt-PT": "Ferramentas de dados para investigação em conversação.",
+      en: "Cleaning tools for ParlAI’s Multi-Session Chat dataset.",
+      "pt-PT": "Ferramentas de limpeza do conjunto de dados Multi-Session Chat do ParlAI.",
     },
     tags: ["Data", "NLP"],
     githubUrl: "https://github.com/gonced8/msc-dataset",
@@ -245,7 +245,7 @@ export const projects: Project[] = [
     title: "nemo-backend",
     description: {
       en: "Backend for the Nemo application, developed for the Sword AI Challenge 2023.",
-      "pt-PT": "Backend de uma aplicação web.",
+      "pt-PT": "Backend da aplicação Nemo, desenvolvida para o Sword AI Challenge de 2023.",
     },
     tags: ["Python", "Backend", "AI"],
     githubUrl: "https://github.com/gonced8/nemo-backend",
@@ -272,7 +272,7 @@ export const projects: Project[] = [
     title: "mcdc",
     description: {
       en: "A tool for automatic MC/DC analysis in C and Python.",
-      "pt-PT": "Uma experiência de engenharia e ferramentas de desenvolvimento.",
+      "pt-PT": "Uma ferramenta para automatizar a análise de cobertura MC/DC em C e Python.",
     },
     tags: ["C", "Python", "Testing"],
     githubUrl: "https://github.com/gonced8/mcdc",
@@ -283,8 +283,8 @@ export const projects: Project[] = [
     id: "receipt-sender",
     title: "receipt-sender",
     description: {
-      en: "A utility for handling receipts.",
-      "pt-PT": "Uma ferramenta para o envio de recibos.",
+      en: "Retrieves information from Google Sheets and sends receipts to the corresponding recipients.",
+      "pt-PT": "Recolhe informação do Google Sheets e envia recibos aos respetivos destinatários.",
     },
     tags: ["Tooling"],
     githubUrl: "https://github.com/gonced8/receipt-sender",

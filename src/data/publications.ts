@@ -29,19 +29,22 @@ export const publications: Publication[] = [
   },
   {
     title: "Information Retrieval Using Fuzzy Fingerprints",
-    authors: ["Gonçalo Raposo", "Leonor Coheur", "Bruno Martins"],
+    authors: ["Gonçalo Raposo", "João Paulo Carvalho", "Luísa Coheur", "Bruno Martins"],
     summary: {
       en: "Exploring fuzzy fingerprints for information retrieval.",
       "pt-PT": "Exploração de fingerprints difusos para recuperação de informação.",
     },
     venue: "IPMU",
+    doi: "https://doi.org/10.1007/978-3-031-74003-9_9",
+    paperUrl:
+      "https://researchportal.ulisboa.pt/en/publications/information-retrieval-using-fuzzy-fingerprints/",
     year: 2024,
     featured: true,
   },
   {
     title:
       "Prompting, Retrieval, Training: An exploration of different approaches for task-oriented dialogue generation",
-    authors: ["Gonçalo Raposo", "Leonor Coheur", "Bruno Martins"],
+    authors: ["Gonçalo Raposo", "Luísa Coheur", "Bruno Martins"],
     summary: {
       en: "Comparing prompting, retrieval and training for task-oriented dialogue generation.",
       "pt-PT":
@@ -54,7 +57,7 @@ export const publications: Publication[] = [
   },
   {
     title: "Question Rewriting? Assessing Its Importance for Conversational Question Answering",
-    authors: ["Gonçalo Raposo", "Rui Ribeiro", "Bruno Martins", "Leonor Coheur"],
+    authors: ["Gonçalo Raposo", "Rui Ribeiro", "Bruno Martins", "Luísa Coheur"],
     summary: {
       en: "Studying question rewriting in conversational QA, linked to the first-place SCAI QReCC 2021 system.",
       "pt-PT":
@@ -70,7 +73,7 @@ export const publications: Publication[] = [
   },
   {
     title: "Document-Level Abstractive Summarization",
-    authors: ["Gonçalo Raposo", "Afonso Raposo", "André S. Carmo"],
+    authors: ["Gonçalo Raposo", "Afonso Raposo", "Ana Sofia Carmo"],
     summary: {
       en: "An exploration of abstractive summarisation at document level.",
       "pt-PT": "Uma exploração da sumarização abstrativa ao nível do documento.",

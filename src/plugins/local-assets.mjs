@@ -9,6 +9,8 @@ export default function localAssets() {
     async function walk(node) {
       if (node.type === "element") {
         const props = (node.properties ??= {});
+        if (Array.isArray(props.className) && props.className.includes("katex-display"))
+          props.tabIndex = 0;
         if (
           node.tagName === "img" &&
           typeof props.src === "string" &&

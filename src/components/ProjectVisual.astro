@@ -23,7 +23,7 @@ const labels =
           <span class="demo-symbol" aria-hidden="true">
             ∞
           </span>
-          <h4>{pt ? "Tenho autismo" : "I am autistic"}</h4>
+          <p class="demo-title">{pt ? "Tenho autismo" : "I am autistic"}</p>
           <p>
             {pt
               ? "Posso precisar de mais tempo para comunicar. Obrigado pela compreensão."
@@ -132,8 +132,9 @@ const labels =
     font-size: 2rem;
     color: var(--accent);
   }
-  .demo-card h4 {
+  .demo-card .demo-title {
     font-size: 1.3rem;
+    font-weight: 650;
     margin: 0.2rem 0 0.7rem;
   }
   .demo-card p {
