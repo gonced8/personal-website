@@ -21,6 +21,25 @@ export const projects: Project[] = [
     group: "featured",
   },
   {
+    title: "PositNN",
+    description:
+      "A C++ framework for training and inference with neural networks using low-precision posit arithmetic.",
+    tags: ["C++", "Posits", "Neural networks", "Systems"],
+    githubUrl: "https://github.com/hpc-ulisboa/posit-neuralnet",
+    featured: true,
+    group: "featured",
+    note: "Master’s thesis work · repository hosted by HPC-ULisboa",
+  },
+  {
+    title: "Notícias do Dia",
+    description:
+      "A daily European Portuguese news podcast built from curated RSS feeds, automated with GitHub Actions and published through RSS.",
+    tags: ["Python", "Automation", "RSS", "Audio"],
+    liveUrl: "https://news-podcast.goncaloraposo.com",
+    featured: true,
+    group: "featured",
+  },
+  {
     title: "Workout Player",
     description:
       "A web app for running AI-generated workouts, with timers, circuits, progress tracking, wake lock and sound cues.",
@@ -91,6 +110,13 @@ export const projects: Project[] = [
     group: "research",
   },
   {
+    title: "nemo-backend",
+    description: "Backend for the Nemo application, developed for the Sword AI Challenge 2023.",
+    tags: ["Python", "Backend", "AI"],
+    githubUrl: "https://github.com/gonced8/nemo-backend",
+    group: "research",
+  },
+  {
     title: "reverse-convolution",
     description: "A Julia/Pluto exploration of reverse convolution and image deblurring.",
     tags: ["Julia", "Pluto", "Imaging"],
@@ -99,8 +125,8 @@ export const projects: Project[] = [
   },
   {
     title: "mcdc",
-    description: "A small engineering and developer tool.",
-    tags: ["Tooling"],
+    description: "A tool for automatic MC/DC analysis in C and Python.",
+    tags: ["C", "Python", "Testing"],
     githubUrl: "https://github.com/gonced8/mcdc",
     group: "tools",
   },
