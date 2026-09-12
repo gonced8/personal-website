@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.goncaloraposo.com/sitemap-index.xml
