@@ -13,7 +13,7 @@ featured: false
 
 Can a blurred image be recovered? Usually, blur discards useful information. But when the blur operation, boundary treatment and output dimensions are all known, convolution can be written as a linear system and, in a controlled case, inverted.
 
-![An animation showing convolution as a filter moving over an image](https://cdn-images-1.medium.com/max/244/0*8TKcMYQe2vkFMA9i)
+![An animation showing convolution as a filter moving over an image](/writing/convolution-animation.gif)
 
 _Convolution illustration by [vdumoulin/conv_arithmetic](https://github.com/vdumoulin/conv_arithmetic), as credited in the original article._
 
@@ -23,23 +23,23 @@ For an image `x`, kernel `k` and output `y`, convolution can be represented as `
 
 With suitable padding, an odd-sized kernel and a same-size output, `A` can be square. When it is invertible, the original can be calculated from `x = A⁻¹ · y`.
 
-![The same-size convolution system represented as a square matrix](https://cdn-images-1.medium.com/max/195/0*FGdRTkhLecX1sBGD)
+![The same-size convolution system represented as a square matrix](/writing/convolution-square-matrix.png)
 
 ## The Julia experiment
 
 I implemented this in Julia and Pluto using a Gaussian blur with replicate padding. Knowing the exact kernel and padding, I built `A` and recovered the original from the blurred result alone. In that controlled setup, the reconstruction is exact.
 
-![Original image and Gaussian-blurred image](https://cdn-images-1.medium.com/max/540/1*8JBCvd6yRtAuQDfjtuXdLw.png)
+![Original image and Gaussian-blurred image](/writing/blurred-original.png)
 
 _Original and blurred image._
 
-![Blurred image and exact reconstruction](https://cdn-images-1.medium.com/max/540/1*_HzBseYyUID0xu0dfl1r6Q.png)
+![Blurred image and exact reconstruction](/writing/blurred-reconstruction.png)
 
 _Blurred image and reconstruction using the known kernel and padding._
 
 This is not a general-purpose deblurring technique. A slightly different kernel leaves blur and artefacts; the wrong padding can make the result unusable. The matrix also grows rapidly with image size. It is a useful experiment in convolutions, linear algebra and image processing, rather than a way to recover arbitrary blurred photographs.
 
-![Reconstruction with an incorrect kernel](https://cdn-images-1.medium.com/max/540/1*bs-R0Vxmqaf8diR_9v31ZA.png)
+![Reconstruction with an incorrect kernel](/writing/blurred-wrong-kernel.png)
 
 _Using an incorrect kernel leaves blur and artefacts._
 
