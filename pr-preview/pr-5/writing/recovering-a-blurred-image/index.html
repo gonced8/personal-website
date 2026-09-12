@@ -8,19 +8,19 @@
 <p>An edited republication of <a href="https://medium.com/@gonced8/can-you-recover-a-blurred-image-61bbcaa969d5">my original Medium article</a>, published in 2020.</p>
 </blockquote>
 <p>Can a blurred image be recovered? Usually, blur discards useful information. But when the blur operation, boundary treatment and output dimensions are all known, convolution can be written as a linear system and, in a controlled case, inverted.</p>
-<p><img src="https://cdn-images-1.medium.com/max/244/0*8TKcMYQe2vkFMA9i" alt="An animation showing convolution as a filter moving over an image"></p>
+<p><img src="/writing/convolution-animation.gif" alt="An animation showing convolution as a filter moving over an image"></p>
 <p><em>Convolution illustration by <a href="https://github.com/vdumoulin/conv_arithmetic">vdumoulin/conv_arithmetic</a>, as credited in the original article.</em></p>
 <h2 id="convolution-as-a-linear-system">Convolution as a linear system</h2>
 <p>For an image <code>x</code>, kernel <code>k</code> and output <code>y</code>, convolution can be represented as <code>A · x = y</code>. <code>A</code> is determined by the kernel and padding rule. If convolution makes the output smaller than the input, the system is underdetermined and there is no unique original image.</p>
 <p>With suitable padding, an odd-sized kernel and a same-size output, <code>A</code> can be square. When it is invertible, the original can be calculated from <code>x = A⁻¹ · y</code>.</p>
-<p><img src="https://cdn-images-1.medium.com/max/195/0*FGdRTkhLecX1sBGD" alt="The same-size convolution system represented as a square matrix"></p>
+<p><img src="/writing/convolution-square-matrix.png" alt="The same-size convolution system represented as a square matrix"></p>
 <h2 id="the-julia-experiment">The Julia experiment</h2>
 <p>I implemented this in Julia and Pluto using a Gaussian blur with replicate padding. Knowing the exact kernel and padding, I built <code>A</code> and recovered the original from the blurred result alone. In that controlled setup, the reconstruction is exact.</p>
-<p><img src="https://cdn-images-1.medium.com/max/540/1*8JBCvd6yRtAuQDfjtuXdLw.png" alt="Original image and Gaussian-blurred image"></p>
+<p><img src="/writing/blurred-original.png" alt="Original image and Gaussian-blurred image"></p>
 <p><em>Original and blurred image.</em></p>
-<p><img src="https://cdn-images-1.medium.com/max/540/1*_HzBseYyUID0xu0dfl1r6Q.png" alt="Blurred image and exact reconstruction"></p>
+<p><img src="/writing/blurred-reconstruction.png" alt="Blurred image and exact reconstruction"></p>
 <p><em>Blurred image and reconstruction using the known kernel and padding.</em></p>
 <p>This is not a general-purpose deblurring technique. A slightly different kernel leaves blur and artefacts; the wrong padding can make the result unusable. The matrix also grows rapidly with image size. It is a useful experiment in convolutions, linear algebra and image processing, rather than a way to recover arbitrary blurred photographs.</p>
-<p><img src="https://cdn-images-1.medium.com/max/540/1*bs-R0Vxmqaf8diR_9v31ZA.png" alt="Reconstruction with an incorrect kernel"></p>
+<p><img src="/writing/blurred-wrong-kernel.png" alt="Reconstruction with an incorrect kernel"></p>
 <p><em>Using an incorrect kernel leaves blur and artefacts.</em></p>
 <p>The <a href="https://github.com/gonced8/reverse-convolution">reverse-convolution repository</a> contains the notebook. The original article includes the worked visual examples and fuller derivation.</p></div> </article> </main> <footer class="site-footer"> <div class="shell footer-inner"> <p>© 2026 Gonçalo Raposo</p> <div> <a href="https://github.com/gonced8">GitHub</a><a href="https://www.linkedin.com/in/goncalo-raposo/">LinkedIn</a><a href="/pr-preview/pr-5/writing/">Writing</a> </div> </div> </footer> </body></html>
