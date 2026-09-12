@@ -47,3 +47,20 @@ const readingTime = Math.max(1, Math.ceil(words / 220));
     <div class="article-content"><slot /></div>
   </article>
 </BaseLayout>
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-animation]").forEach((button) => {
+    const img = button.parentElement?.querySelector("img");
+    if (!img) return;
+    const poster = img.src;
+    const pt = document.documentElement.lang === "pt-PT";
+    const play = pt ? "Reproduzir animação" : "Play animation";
+    button.hidden = false;
+    button.textContent = play;
+    button.addEventListener("click", () => {
+      const active = button.getAttribute("aria-pressed") === "true";
+      img.src = active ? poster : button.dataset.animation!;
+      button.setAttribute("aria-pressed", String(!active));
+      button.textContent = active ? play : pt ? "Parar animação" : "Stop animation";
+    });
+  });
+</script>
