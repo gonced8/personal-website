@@ -4,6 +4,7 @@ description: "Reversing a convolution in Julia: the full explanation, equations 
 date: 2020-09-13
 updated: 2026-09-12
 locale: en
+translationKey: recovering-a-blurred-image
 projectId: reverse-convolution
 tags: [julia, imaging, convolution, linear-algebra]
 draft: false
